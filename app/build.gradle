@@ -1,6 +1,11 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
+def localProps = new Properties()
+def localPropsFile = rootProject.file('local.properties')
+if (localPropsFile.exists()) localPropsFile.withInputStream { localProps.load(it) }
+def appCenterSecret = System.getenv('APPCENTER_SECRET') ?: localProps.getProperty('appcenter.secret', '')
+
 android {
     namespace 'com.lalorosas.myinvestments'
     compileSdk 36
@@ -13,6 +18,8 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "APPCENTER_SECRET", "\"${appCenterSecret}\""
     }
 
     buildTypes {
@@ -24,6 +31,9 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
+    }
+    buildFeatures {
+        buildConfig true
     }
     kotlinOptions {
         jvmTarget = '17'

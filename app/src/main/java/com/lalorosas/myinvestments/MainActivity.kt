@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AppCenter.start(
-            application, "7ac33947-9bfd-4522-b06f-b477d02bdbef",
+            application, BuildConfig.APPCENTER_SECRET,
             Analytics::class.java, Crashes::class.java
         )
         setContentView(R.layout.activity_main)
