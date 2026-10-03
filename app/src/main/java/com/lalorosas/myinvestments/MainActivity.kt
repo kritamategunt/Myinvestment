@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (BuildConfig.DEBUG) AppCenter.setLogLevel(android.util.Log.VERBOSE)
         AppCenter.start(
             application, BuildConfig.APPCENTER_SECRET,
             Analytics::class.java, Crashes::class.java
