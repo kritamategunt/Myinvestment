@@ -224,3 +224,18 @@ fabric.properties
 !/gradle/wrapper/gradle-wrapper.jar
 
 # End of https://www.toptal.com/developers/gitignore/api/android,androidstudio,kotlin
+
+# Kotlin 2.x compiler data
+.kotlin/
+
+# Android Studio IDE migration state
+.idea/migrations.xml
+
+# Gradle user home accidentally placed inside the project
+/caches/
+/daemon/
+/native/
+/wrapper/
+/kotlin-profile/
+/android/
+/.tmp/

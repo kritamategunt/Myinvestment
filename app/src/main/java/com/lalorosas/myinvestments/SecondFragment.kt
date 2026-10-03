@@ -6,9 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import androidx.navigation.fragment.findNavController
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_second.*
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
@@ -28,11 +28,13 @@ class SecondFragment : Fragment() {
 
         view.findViewById<Button>(R.id.button_second).setOnClickListener {
             val dbHelper = InvestmentDBOpenHelper((activity as MainActivity), null)
-            val investment = Investment(editTextInvestmentName.text.toString(), editTextInvestmentAmount.text.toString().toFloat())
+            val name = view.findViewById<EditText>(R.id.editTextInvestmentName).text.toString()
+            val amount = view.findViewById<EditText>(R.id.editTextInvestmentAmount).text.toString().toFloat()
+            val investment = Investment(name, amount)
             dbHelper.insert(investment)
 
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
-            (activity as MainActivity).fab?.show()
+            requireActivity().findViewById<FloatingActionButton>(R.id.fab).show()
         }
     }
 }

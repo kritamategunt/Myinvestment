@@ -10,7 +10,6 @@ import android.widget.Button
 import android.widget.ListView
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
-import kotlinx.android.synthetic.main.fragment_first.*
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -40,6 +39,6 @@ class FirstFragment : Fragment() {
         val investments = dbHelper.read()
 
         val adapter = ArrayAdapter<Investment>((activity as MainActivity), android.R.layout.simple_list_item_1, investments!!.toMutableList())
-        listViewInvestments.adapter = adapter
+        investmentListView.adapter = adapter
     }
 }

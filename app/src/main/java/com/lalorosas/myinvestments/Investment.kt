@@ -66,8 +66,8 @@ class InvestmentDBOpenHelper(context: Context,
         val investments = ArrayList<Investment>()
 
         while(cursor.moveToNext()) {
-            val name = cursor.getString(cursor.getColumnIndex(COLUMN_NAME))
-            val amount = cursor.getFloat(cursor.getColumnIndex(COLUMN_AMOUNT))
+            val name = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NAME))
+            val amount = cursor.getFloat(cursor.getColumnIndexOrThrow(COLUMN_AMOUNT))
             val investment = Investment(name, amount)
             investments.add(investment)
         }
