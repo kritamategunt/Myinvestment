@@ -4,7 +4,8 @@ apply plugin: 'kotlin-android'
 def localProps = new Properties()
 def localPropsFile = rootProject.file('local.properties')
 if (localPropsFile.exists()) localPropsFile.withInputStream { localProps.load(it) }
-def appCenterSecret = System.getenv('APPCENTER_SECRET') ?: localProps.getProperty('appcenter.secret', '')
+def appCenterSecret = (System.getenv('APPCENTER_SECRET') ?: localProps.getProperty('appcenter.secret', ''))
+        .trim().replaceAll(/^"|"$/, '')
 
 android {
     namespace 'com.lalorosas.myinvestments'
